@@ -1,4 +1,5 @@
 {
+  "proxy": "http://www.4399.com",
   "private": true,
   "scripts": {
     "start": "umi dev",
