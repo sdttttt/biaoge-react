@@ -1,4 +1,5 @@
 import React from 'react';
+import router from 'umi/router';
 import { Menu , Icon  } from 'antd';
 
 interface IProps {
@@ -9,13 +10,13 @@ const NavigationMenu: React.FC<IProps> = (props: IProps) =>{
 
   return (
     <Menu  mode="horizontal">
-        <Menu.Item key="mail">
-          <Icon type="mail" />
+        <Menu.Item onClick={()=>{router.push('/login')}} key="login">
+          <Icon type="user" />
           Login
         </Menu.Item>
-        <Menu.Item key="app" disabled>
-          <Icon type="appstore" />
-          Navigation Two
+        <Menu.Item onClick={()=>{router.push('/')}} key="home">
+          <Icon type="bank" />
+          Home
         </Menu.Item>
         <Menu.Item key="app">
           <Icon type="appstore" />

@@ -52,7 +52,7 @@ export default class Login extends React.Component {
               Log in
             </Button>
             <br />
-            Or <a href="">register now!</a>
+            Or <a href="">👉 register now! </a>
           </Form.Item>
         </Form>
       </div>
