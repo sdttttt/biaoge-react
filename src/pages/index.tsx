@@ -8,7 +8,7 @@ const Index: React.FC = () => {
     <div>
       <div className={styles.welcome}>
         <div className={styles.welcomeText}>
-          <h1> WelCome to SDTTTT Page! 🐳 <br /> Thank you ! ✌ </h1>
+          <h1> WelCome to SDTTTT Page! 🐳  </h1>
         </div>
       </div>
     </div>

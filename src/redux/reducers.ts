@@ -1,5 +1,4 @@
 import { LOGIN, LOGOUT } from './action-type';
-import { combineReducers } from 'redux';
 import { UserState } from './state';
 import { loginAction, logoutAction } from './action';
 

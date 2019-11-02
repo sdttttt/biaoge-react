@@ -1,16 +1,18 @@
-import React from 'react';
+import React , { useEffect } from 'react';
 import router from 'umi/router';
 import { Menu , Icon  } from 'antd';
+import { connect } from 'react-redux';
 
 interface IProps {
-  theme?: string;
+  theme;
 }
 
-const NavigationMenu: React.FC<IProps> = (props: IProps) =>{
+const mapStateToProps = (state) => state
 
+const NavigationMenuView: React.FC<IProps> = (props: IProps) => {
   return (
     <Menu  mode="horizontal">
-        <Menu.Item onClick={()=>{router.push('/login')}} key="login">
+        <Menu.Item onClick={()=>{router.push('/login')}} key="login" disabled={props.isLogin} >
           <Icon type="user" />
           Login
         </Menu.Item>
@@ -24,11 +26,13 @@ const NavigationMenu: React.FC<IProps> = (props: IProps) =>{
         </Menu.Item>
         <Menu.Item key="alipay">
           <a href="#"  rel="noopener noreferrer">
-            Navigation Four - Link
+            {props.username}
           </a>
         </Menu.Item>
       </Menu>
   );
 }
+
+const NavigationMenu = connect(mapStateToProps)(NavigationMenuView);
 
 export default NavigationMenu;

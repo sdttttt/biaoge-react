@@ -2,18 +2,13 @@ import React from 'react';
 import { Form } from 'antd';
 import { LOGIN } from '../redux/action-type';
 import { connect } from 'react-redux';
-import { UserState } from '../redux/state';
+import router from 'umi/router';
 import LoginView from '../components/Login';
 
 /*
   将 state对象 映射到 Props 上
 */
-const mapStateToProps = (state) => {
-  return {
-    isLogin: state.isLogin,
-    username: state.username
-  }
-}
+const mapStateToProps = (state) => state
 
 const dispatchToProps = dispatch => {
   return {
@@ -43,8 +38,16 @@ export default class Login extends React.Component {
     });
   };
 
+  public componentWillMount(){
+    if (this.props.username != null && this.props.isLogin){
+      router.push('/');
+    }
+  }
+
   public componentDidUpdate(){
-    console.log(this.props);
+    if (this.props.username != null && this.props.isLogin){
+      router.push('/');
+    }
   }
 
   public render() {
