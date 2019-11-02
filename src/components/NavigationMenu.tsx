@@ -4,10 +4,10 @@ import { Menu , Icon  } from 'antd';
 import { connect } from 'react-redux';
 
 interface IProps {
-  theme;
+  theme?: string;
 }
 
-const mapStateToProps = (state) => state
+const mapStateToProps = (state) => state;
 
 const NavigationMenuView: React.FC<IProps> = (props: IProps) => {
   return (
@@ -33,6 +33,9 @@ const NavigationMenuView: React.FC<IProps> = (props: IProps) => {
   );
 }
 
+/*
+  连接到 Redux 上
+*/
 const NavigationMenu = connect(mapStateToProps)(NavigationMenuView);
 
 export default NavigationMenu;
