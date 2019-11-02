@@ -18,12 +18,12 @@ const NavigationMenu: React.FC<IProps> = (props: IProps) =>{
           <Icon type="bank" />
           Home
         </Menu.Item>
-        <Menu.Item key="app">
-          <Icon type="appstore" />
-          Navigation Two
+        <Menu.Item onClick={()=>{router.push('/register')}} key="app">
+          <Icon type="user-add" />
+          Register
         </Menu.Item>
         <Menu.Item key="alipay">
-          <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+          <a href="#"  rel="noopener noreferrer">
             Navigation Four - Link
           </a>
         </Menu.Item>
