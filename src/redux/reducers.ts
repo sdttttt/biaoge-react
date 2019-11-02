@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { UserState } from './state';
 import { loginAction, logoutAction } from './action';
 
-function userChange( state: UserState = { isLogin: false , username: null } , action ) {
+export function userChange( state: UserState = { isLogin: false , username: null } , action ): UserState {
 
   console.log(state , action);
 
@@ -16,9 +16,3 @@ function userChange( state: UserState = { isLogin: false , username: null } , ac
       return state;
   }
 }
-
-
-
-export const finalReducers = combineReducers( {
-  userChange
-})

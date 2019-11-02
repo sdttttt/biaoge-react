@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import { finalReducers } from './reducers';
+import { userChange } from './reducers';
 
-const store = createStore(finalReducers , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(userChange , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default store;
