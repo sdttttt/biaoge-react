@@ -2,19 +2,17 @@ import React from 'react';
 import styles from './login.css';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
-@Form.create({name: 'login'})
+@Form.create({ name: 'login' })
 export default class Login extends React.Component {
 
-  handleSubmit = e  => {
+  handleSubmit = e => {
     e.preventDefault();
 
-    this.props.form.validateFields((err, values) => {
+    (this.props as any).form.validateFields((err, values) => {
       if (err) {
         console.log("fuck you", values);
-      } else { 
-        fetch("http://www.4399.com").then( (res: Response) => { 
-          console.log(res);
-        })
+      } else {
+        console.log('OK' , values);
       }
     });
 
@@ -22,8 +20,8 @@ export default class Login extends React.Component {
 
   public render() {
 
-    const { getFieldDecorator } = this.props.form;
-    
+    const { getFieldDecorator } = (this.props as any).form;
+
     return (
       <div className={styles.LoginComponent}>
         <Form onSubmit={this.handleSubmit} className={styles.loginForm}>
@@ -49,20 +47,15 @@ export default class Login extends React.Component {
             )}
           </Form.Item>
           <Form.Item>
-            {getFieldDecorator('remember', {
-              valuePropName: 'checked',
-              initialValue: true,
-            })(<Checkbox>Remember me</Checkbox>)}
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
+
             <Button type="primary" htmlType="submit" className="login-form-button">
               Log in
             </Button>
+            <br />
             Or <a href="">register now!</a>
           </Form.Item>
-          </Form>
-        </div>
+        </Form>
+      </div>
     );
   }
 }

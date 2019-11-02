@@ -1,8 +1,14 @@
 import React from 'react';
 import Button from 'antd/es/button';
+import NavigationMenu from '../components/NavigationMenu';
 
-export default () => {
+const Index: React.FC = () => {
   return (
-    <Button type="primary">123123</Button>
+    <div>
+      <Button type="primary">123123</Button>
+      <NavigationMenu />
+    </div>
   );
 }
+
+export default Index

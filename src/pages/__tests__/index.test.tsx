@@ -1,7 +1,7 @@
 import 'jest';
 import Index from '..';
 import React from 'react';
-import renderer, { ReactTestInstance, ReactTestRenderer } from 'react-test-renderer';
+import renderer, { ReactTestRenderer } from 'react-test-renderer';
 
 
 describe('Page: index', () => {
@@ -9,4 +9,8 @@ describe('Page: index', () => {
     const wrapper: ReactTestRenderer = renderer.create(<Index />);
     expect(wrapper.root.children.length).toBe(1);
   });
+});
+
+test('this is a test', () => {
+  console.log('OKOKOK')
 });
