@@ -9,7 +9,11 @@ const config: IConfig = {
       routes: [
         {
           path: '/login',
-          component: '../pages/login',
+          component: './login',
+        },
+        {
+          path: '/register',
+          component: './register',
         },
         {
           path: '/',

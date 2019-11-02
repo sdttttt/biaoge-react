@@ -1,18 +1,44 @@
 import React from 'react';
 import styles from './login.css';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { LOGIN } from '../redux/action-type';
+import { connect } from 'react-redux';
+import { UserState } from '../redux/state';
+
+/*
+  将 state对象 映射到 Props 上
+*/
+const stateToProps: (state: UserState) => UserState = (state) => {
+  return {
+    isLogin: state.isLogin,
+    username: state.username
+  }
+}
+
+const dispatchToProps = dispatch => {
+  return {
+    login: username => {
+      dispatch({
+        type: LOGIN,
+        data: username
+      });
+    }
+  }
+}
 
 @Form.create({ name: 'login' })
+@connect(stateToProps,dispatchToProps)
 export default class Login extends React.Component {
 
-  handleSubmit = e => {
+  public handleSubmit = e => {
     e.preventDefault();
 
     (this.props as any).form.validateFields((err, values) => {
       if (err) {
         console.log("fuck you", values);
       } else {
-        console.log('OK' , values);
+        console.log(this.props);
+        this.props.login(values.username);
       }
     });
 
