@@ -6,7 +6,7 @@ const Index: React.FC = () => {
   return (
     <div>
       <Button type="primary">123123</Button>
-      <NavigationMenu />
+      <NavigationMenu theme="fuck you" />
     </div>
   );
 }
