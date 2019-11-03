@@ -1,6 +1,16 @@
 import { createStore } from 'redux';
 import { userChange } from './reducers';
+import * as persist from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-const store = createStore(userChange , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const storageConfig = {
+    key: 'root', // 必须有的
+       storage: storage, // 缓存机制
+       blacklist: [] // reducer 里不持久化的数据,除此外均为持久化数据
+};
 
+const persistReducers = persist.persistReducer(storageConfig , userChange);
+const store = createStore(persistReducers);
+
+export const persistStore = persist.persistStore(store);
 export default store;

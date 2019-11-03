@@ -9,12 +9,12 @@ interface IProps {
 
 const mapStateToProps = (state) => state;
 
-const NavigationMenuView: React.FC<IProps> = (props: IProps) => {
+const NavigationMenuView: React.FC<IProps> = (props: IProps | any) => {
 
-  const toLogin = () => {router.push('/login')};
-
+    const toLogin = () => {router.push('/login')};
     const toHome = () => { router.push('/'); };
     const toRegister = () => { router.push('/register'); };
+    
   return (
     <Menu  mode="horizontal">
         <Menu.Item onClick={toLogin} key="login" disabled={props.isLogin} >

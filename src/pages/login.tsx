@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Form } from 'antd';
 import { LOGIN } from '../redux/action-type';
 import { connect } from 'react-redux';
@@ -21,38 +21,32 @@ const dispatchToProps = dispatch => {
   }
 }
 
-@Form.create({ name: 'login' })
-@connect(mapStateToProps,dispatchToProps)
-export default class Login extends React.Component {
+const LoginForm: React.FC = (props: any) => {
 
-  public handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
 
-    (this.props as any).form.validateFields((err, values) => {
+    (props as any).form.validateFields((err, values) => {
       if (err) {
         console.log("fuck you", values);
       } else {
-        console.log(this.props);
-        (this.props as any).login(values.username);
+        console.log(props);
+        (props as any).login(values.username);
       }
     });
   };
 
-  public componentWillMount(){
-    if (this.props.username != null && this.props.isLogin){
+  useEffect( () => {
+    if(props.isLogin) {
       router.push('/');
     }
-  }
+  },[props.isLogin]);
 
-    public componentDidUpdate() {
-        if (this.props.username != null && (this.props as any).isLogin) {
-      router.push('/');
-    }
-  }
-
-  public render() {
     return (
-      <LoginView handleSubmit={this.handleSubmit} form={(this.props as any).form} />
+      <LoginView handleSubmit={handleSubmit} form={(props as any).form} />
     );
-  }
 }
+
+const Login = connect(mapStateToProps,dispatchToProps)(Form.create({name: 'login'})(LoginForm));
+
+export default Login;

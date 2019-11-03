@@ -28,7 +28,7 @@ const config: IConfig = {
       'umi-plugin-react',
       {
         antd: true,
-        dva: true,
+        dva: false,
         dynamicImport: false,
         title: 'biaoge',
         dll: false,
@@ -46,3 +46,4 @@ const config: IConfig = {
   ],
 };
 export default config;
+

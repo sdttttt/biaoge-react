@@ -11,31 +11,33 @@ const LoginView: React.FC<IProps> = (props: IProps) => {
 
   const { getFieldDecorator } = props.form;
 
+  const username = getFieldDecorator('username', {
+    rules: [{ required: true, message: 'Please input your username!' }],
+  })(
+    <Input
+      prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+      placeholder="Username"
+    />,
+  )
 
+  const password = getFieldDecorator('password', {
+    rules: [{ required: true, message: 'Please input your Password!' }],
+  })(
+    <Input
+      prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+      type="password"
+      placeholder="Password"
+    />,
+  )
 
   return (
     <div className={styles.LoginComponent}>
-      <Form onSubmit={ props.handleSubmit } className={styles.loginForm}>
+      <Form onSubmit={props.handleSubmit} className={styles.loginForm}>
         <Form.Item>
-          {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please input your username!' }],
-          })(
-            <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Username"
-            />,
-          )}
+          {username}
         </Form.Item>
         <Form.Item>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }],
-          })(
-            <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              type="password"
-              placeholder="Password"
-            />,
-          )}
+          {password}
         </Form.Item>
         <Form.Item>
 
