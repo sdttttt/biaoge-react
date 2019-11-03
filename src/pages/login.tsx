@@ -44,8 +44,8 @@ export default class Login extends React.Component {
     }
   }
 
-  public componentDidUpdate(){
-    if (this.props.username != null && this.props.isLogin){
+    public componentDidUpdate() {
+        if (this.props.username != null && (this.props as any).isLogin) {
       router.push('/');
     }
   }

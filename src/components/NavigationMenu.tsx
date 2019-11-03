@@ -1,4 +1,4 @@
-import React , { useEffect } from 'react';
+import React from 'react';
 import router from 'umi/router';
 import { Menu , Icon  } from 'antd';
 import { connect } from 'react-redux';
@@ -10,17 +10,22 @@ interface IProps {
 const mapStateToProps = (state) => state;
 
 const NavigationMenuView: React.FC<IProps> = (props: IProps) => {
+
+  const toLogin = () => {router.push('/login')};
+
+    const toHome = () => { router.push('/'); };
+    const toRegister = () => { router.push('/register'); };
   return (
     <Menu  mode="horizontal">
-        <Menu.Item onClick={()=>{router.push('/login')}} key="login" disabled={props.isLogin} >
+        <Menu.Item onClick={toLogin} key="login" disabled={props.isLogin} >
           <Icon type="user" />
           Login
         </Menu.Item>
-        <Menu.Item onClick={()=>{router.push('/')}} key="home">
+        <Menu.Item onClick={toHome} key="home">
           <Icon type="bank" />
           Home
         </Menu.Item>
-        <Menu.Item onClick={()=>{router.push('/register')}} key="app">
+        <Menu.Item onClick={toRegister} key="app">
           <Icon type="user-add" />
           Register
         </Menu.Item>

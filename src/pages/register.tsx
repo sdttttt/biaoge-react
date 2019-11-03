@@ -1,14 +1,24 @@
-
 import React from 'react';
-import styles from './register.css';
+import { Form } from 'antd';
+import RegistrationView from '../components/Register'
 
-const Register: React.FC = () => {
-  
+const RegistrationForm: React.FC = (props: any) => {
+
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
+  };
+
   return (
-    <div className={styles.normal}>
-      <h1>Page register</h1>
-    </div>
+    <RegistrationView handleSubmit={handleSubmit} form={props.form} />
   );
 }
 
-export default Register;
+const Register = Form.create({ name: 'register' })(RegistrationForm);
+
+export default Register

@@ -11,6 +11,8 @@ const LoginView: React.FC<IProps> = (props: IProps) => {
 
   const { getFieldDecorator } = props.form;
 
+
+
   return (
     <div className={styles.LoginComponent}>
       <Form onSubmit={ props.handleSubmit } className={styles.loginForm}>
