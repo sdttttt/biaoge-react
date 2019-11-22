@@ -1,31 +1,36 @@
 import React from 'react';
 import { Form, notification ,Button } from 'antd';
 import RegistrationView from '../components/Register'
+import * as UserHttp from '@/http/UserHttp';
 
 const RegistrationForm: React.FC = (props: any) => {
-
-
 
   const handleSubmit = e => {
     e.preventDefault();
     props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
 
-        const key = '' + Date.now()
+        UserHttp.RegisterUserApi(values.username , values.password , values.repassword).then( req => {
+          console.log(req);
 
-        const noteBtn = (
-          <Button type="primary" size="small" onClick={() => notification.close(key)}>
-            Confirm
-          </Button>
-        )
+          const key = '' + Date.now();
 
-        notification.success({
-          message: "We Succeeded !",
-          description:
-            `村里来了一位年轻人，这位年轻人是 ${values.username} `,
-          btn: noteBtn,
-          key,
+          const noteBtn = (
+            <Button type="primary" size="small" onClick={() => notification.close(key)}>
+              Confirm
+            </Button>
+          );
+
+          notification.success({
+            message: "We Succeeded !",
+            description:
+              `村里来了一位年轻人，这位年轻人是 ${values.username} `,
+            btn: noteBtn,
+            key,
+          });
         });
+
+
       }
     });
   };
@@ -33,7 +38,7 @@ const RegistrationForm: React.FC = (props: any) => {
   return (
     <RegistrationView handleSubmit={handleSubmit} form={props.form} />
   );
-}
+};
 
 const Register = Form.create({ name: 'register' })(RegistrationForm);
 
