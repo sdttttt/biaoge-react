@@ -2,3 +2,13 @@
 .normal {
   background: #F2798F;
 }
+
+.regBox {
+  border: solid 1px #FFF;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px #DDD;
+  width: 380px;
+  height: 280px;
+  margin: 100px auto 0px auto;
+  padding: 30px;
+}

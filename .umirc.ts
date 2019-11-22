@@ -1,6 +1,13 @@
 import { IConfig } from 'umi-types'; // ref: https://umijs.org/config/
 
 const config: IConfig = {
+  proxy: {
+    "/apiapi": {
+      target: "http://www.4399.com/",
+      pathRewrite: { '^/apiapi': '' },
+      changeOrigin: true
+    }
+  },
   treeShaking: true,
   routes: [
     {
@@ -28,7 +35,7 @@ const config: IConfig = {
       'umi-plugin-react',
       {
         antd: true,
-        dva: false,
+        dva: true,
         dynamicImport: false,
         title: 'biaoge',
         dll: false,
