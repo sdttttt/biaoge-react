@@ -4,11 +4,9 @@ import { loginAction, logoutAction } from './action';
 
 export function userChange( state: UserState = { isLogin: false , username: null } , action ): UserState {
 
-  console.log(state , action);
-
   switch(action.type){
     case LOGIN:
-      return loginAction(state ,action.data);
+      return loginAction(state, action.username);
     case LOGOUT:
       return logoutAction(state);
     default:

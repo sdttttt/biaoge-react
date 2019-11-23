@@ -14,10 +14,10 @@ const NavigationMenuView: React.FC<IProps> = (props: IProps | any) => {
     const toLogin = () => {router.push('/login')};
     const toHome = () => { router.push('/'); };
     const toRegister = () => { router.push('/register'); };
-    
+
   return (
     <Menu  mode="horizontal">
-        <Menu.Item onClick={toLogin} key="login" disabled={props.isLogin} >
+      <Menu.Item onClick={toLogin} key="login" disabled={props.userStatus.isLogin}>
           <Icon type="user" />
           Login
         </Menu.Item>

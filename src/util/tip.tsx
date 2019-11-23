@@ -4,13 +4,17 @@ import React from 'react';
 export function noticeError(
   message: string ,
   description: string ,
-  btn: React.ReactNode = defaultBtn() ,
+  btnFunc: (key: string) => React.ReactNode = defaultBtn,
 ): void {
+
+  const key: string = keyGenerator();
+  const btn: React.ReactNode = btnFunc(key);
 
   notification.error({
     message,
     description,
     btn,
+    key,
   });
 
 }
@@ -29,8 +33,9 @@ export function noticeSuccess(
 /*
 * default notification Button
 * */
-const defaultBtn: () => React.ReactNode = () =>{
-  const onClick = () => notification.close(keyGenerator());
+const defaultBtn: (key: string) => React.ReactNode = (key) => {
+
+  const onClick = () => notification.close(key);
   return (
     <Button type="primary" size="small" onClick={onClick}>
       Confirm
