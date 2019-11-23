@@ -6,7 +6,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import store,{ persistStore } from '../redux/store';
 
 const BasicLayout: React.FC = props => {
-
+  console.log(process.env.NODE_ENV)
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistStore}>

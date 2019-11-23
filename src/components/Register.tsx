@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React, { FormEvent, useState } from 'react';
 import {
   Form,
   Input,
@@ -13,15 +13,14 @@ import {
   AutoComplete,
 } from 'antd';
 import styles from './register.css';
-import { WrappedFormUtils } from 'antd/es/form/Form';
+import { FormComponentProps } from 'antd/es/form';
 
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
 
-interface IProps {
-  handleSubmit: (e: any) => void;
-  form: WrappedFormUtils;
+interface IProps extends FormComponentProps {
+  handleSubmit: (e: FormEvent) => void;
 }
 
 const RegistrationView: React.FC<IProps> = (props: IProps) => {
@@ -74,7 +73,7 @@ const RegistrationView: React.FC<IProps> = (props: IProps) => {
     <div className={styles.regBox}>
       <Form onSubmit={props.handleSubmit}>
         {fieldArray.map( (field ,index ) =><Form.Item key={index} >{field}</Form.Item>)}
-        <Button htmlType='submit' type='primary' > 走，我们去探险 </Button>
+        <Button htmlType='submit' type='primary' > 走，我们去探险！ </Button>
       </Form>
     </div>
   );

@@ -1,7 +1,11 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import getConfig from '@/configuration';
+
+const env = getConfig();
+const baseURL = env.baseUrl;
 
 const config: AxiosRequestConfig = {
-    baseURL: 'http://121.40.48.194:10086/',
+    baseURL,
     timeout: 10000,
     responseType: 'json',
     headers: {
