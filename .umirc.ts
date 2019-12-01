@@ -1,4 +1,4 @@
-import { IConfig } from 'umi-types'; // ref: https://umijs.org/config/
+import { IConfig, IWebpackChainConfig } from 'umi-types'; // ref: https://umijs.org/config/
 
 const config: IConfig = {
   proxy: {
@@ -7,6 +7,14 @@ const config: IConfig = {
       pathRewrite: { '^/apiapi': '' },
       changeOrigin: true
     }
+  },
+  chainWebpack(config: IWebpackChainConfig , { webpack }) {
+    config.entry('index')
+    .add( __dirname + '/src/app.ts')
+    .end()
+    .output
+    . path( __dirname + '/docs/' );
+  
   },
   treeShaking: true,
   routes: [
